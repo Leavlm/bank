@@ -20,12 +20,13 @@ class TransactionController extends Controller
          $currentMonth = Carbon::now()->format('m');
 
          // Filtrez les transactions en fonction du mois en cours.
-         $transactionByMonth = Transaction::whereMonth('date_transaction', $currentMonth)->get();
-         
+         $transactionByMonth = Transaction::whereMonth('date_transaction', $currentMonth)->orderBy('date_transaction', 'desc')->get();
         $data = [
             'title' => 'Liste des transactions',
-            'transactions' => $transactionByMonth
+            'transactions' => $transactionByMonth,
+            'sum' => Transaction::all()->sum('amount')
         ];
+        // $data->sum('sum');
         return view('bank', $data);
     }
 
