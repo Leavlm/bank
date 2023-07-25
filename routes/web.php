@@ -20,4 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/transactions', [TransactionController::class, 'index'])->name('home');
 Route::get('/form', [TransactionController::class, 'create'])->name('form');
 Route::post('/add', [TransactionController::class, 'store'])->name('add');
+Route::get('/sup', [TransactionController::class, 'destroy'])->name('sup');
 Route::put('/transactions/{id}', 'TransactionController@update')->name('transaction.update');
+
