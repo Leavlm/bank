@@ -52,20 +52,19 @@
             <div class="card-body">
                 <form action=" {{ route('transaction.update', $transaction->id) }} " method="POST" >
                     @csrf
-                    <!-- @method('PUT') -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Nom de l'opération *</label>
-                        <input type="text" class="form-control" name="name" id="name"
-                            placeholder="Facture d'électricité" value="{{ $transaction->name }}" required>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $transaction->name }}" 
+                            placeholder="Facture d'électricité" required>
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">Date *</label>
-                        <input type="date" class="form-control" name="date" id="date" value="{{ $transaction->date }}"  required>
+                        <input type="date" class="form-control" name="date" id="date" value="{{ $transaction->date_transaction }}"  required>
                     </div>
                     <div class="mb-3">
                         <label for="amount" class="form-label">Montant *</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" name="amount" id="amount"  value="{{ $transaction->amount }}"  required>
+                            <input type="text" class="form-control" name="amount" id="amount" value="{{ $transaction->amount }}"  required>
                             <span class="input-group-text">€</span>
                         </div>
                     </div>
