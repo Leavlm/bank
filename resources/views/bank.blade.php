@@ -33,6 +33,7 @@
                     </li>
                 </ul>
             </nav>
+
             <form action="" class="col-12 col-md-4" role="search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Rechercher..." aria-describedby="button-search">
@@ -43,6 +44,18 @@
             </form>
         </header>
     </div>
+    
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
 
     <div class="container">
         <section class="card mb-4 rounded-3 shadow-sm">
