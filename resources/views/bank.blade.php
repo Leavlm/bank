@@ -87,7 +87,7 @@
                                 <a href="{{ route('transaction.edit', $transaction->id) }}" class="btn btn-outline-primary btn-sm rounded-circle">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <a href=" {{ @route('sup'), $transaction }} " class="btn btn-outline-danger btn-sm rounded-circle">
+                                <a href=" {{ route('transaction.destroy', $transaction->id) }} " class="btn btn-outline-danger btn-sm rounded-circle">
                                     <i class="bi bi-trash"></i>
                                 </a>
                             </td>

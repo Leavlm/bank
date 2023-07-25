@@ -131,6 +131,12 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        
+        $transaction = Transaction::find($id);
+        if ($transaction) {
+            $transaction->delete();
+            return redirect()->route('home')->with('success', 'Transaction supprimée avec succès.');
+        } else {
+            return redirect()->route('home')->with('error', 'La transaction n\'existe pas ou a déjà été supprimée.');
+        }
     }
 }
