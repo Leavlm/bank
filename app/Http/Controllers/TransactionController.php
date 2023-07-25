@@ -27,7 +27,6 @@ class TransactionController extends Controller
             'transactions' => $transactionByMonth,
             'sum' => Transaction::all()->sum('amount')
         ];
-        // $data->sum('sum');
         return view('bank', $data);
     }
 
@@ -71,7 +70,16 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        // Récupérer la transaction à partir de l'ID donné
+    $transaction = Transaction::find($id);
+
+    if (!$transaction) {
+        // Gérer le cas où la transaction n'a pas été trouvée
+        return redirect()->route('home')->with('error', 'Transaction non trouvée.');
+    }
+
+    // Afficher la vue avec les détails de la transaction
+    return view('transaction.show', ['transaction' => $transaction]);
     }
 
     /**
@@ -94,7 +102,28 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // Valider les entrées du formulaire
+    $request->validate([
+        'name' => 'required|string',
+        'amount' => 'required|numeric',
+        'date' => 'required|date',
+    ]);
+
+    // Récupérer la transaction à partir de l'ID donné
+    $transaction = Transaction::find($id);
+
+    if (!$transaction) {
+        // Gérer le cas où la transaction n'a pas été trouvée
+        return redirect()->route('home')->with('error', 'Transaction non trouvée.');
+    }
+
+    // Mettre à jour les propriétés de la transaction avec les nouvelles valeurs
+    $transaction->name = $request->input('name');
+    $transaction->amount = $request->input('amount');
+    $transaction->date_transaction = $request->input('date');
+    $transaction->save();
+
+    return redirect()->route('home')->with('success', 'Transaction modifiée avec succès.');
     }
 
     /**

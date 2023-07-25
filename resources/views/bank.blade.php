@@ -79,12 +79,12 @@
                                 {{ $transaction->name }}
                             </td>
                             <td class="text-end">
-                            <span class="rounded-pill text-nowrap {{ $transaction->amount > 0 ? 'bg-success-subtle' : 'bg-warning-subtle' }} px-2">
-    {{ str_replace(".", ",", $transaction->amount) }}
-</span>
+                                <span class="rounded-pill text-nowrap {{ $transaction->amount > 0 ? 'bg-success-subtle' : 'bg-warning-subtle' }} px-2">
+                                    {{ str_replace(".", ",", $transaction->amount) }}
+                                </span>
                             </td>
                             <td class="text-end text-nowrap">
-                                <a href="#" class="btn btn-outline-primary btn-sm rounded-circle">
+                                <a href="{{ route('transaction.update', $transaction->id) }}" class="btn btn-outline-primary btn-sm rounded-circle">
                                     <i class="bi bi-pencil"></i>
                                 </a>
                                 <a href=" {{ @route('sup'), $transaction }} " class="btn btn-outline-danger btn-sm rounded-circle">
