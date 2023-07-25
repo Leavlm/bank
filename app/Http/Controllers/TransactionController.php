@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
@@ -12,11 +13,18 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+         // Obtenez le mois en cours au format numérique (1 pour janvier, 2 pour février, etc.).
+         $currentMonth = Carbon::now()->format('m');
+
+         // Filtrez les transactions en fonction du mois en cours.
+         $transactionByMonth = Transaction::whereMonth('date_transaction', $currentMonth)->get();
+         
         $data = [
             'title' => 'Liste des transactions',
-            'transactions' => Transaction::all()
+            'transactions' => $transactionByMonth
         ];
         return view('bank', $data);
     }
@@ -25,7 +33,7 @@ class TransactionController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */  
     public function create()
     {
         //
