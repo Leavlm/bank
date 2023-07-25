@@ -26,7 +26,6 @@ class TransactionController extends Controller
             'transactions' => $transactionByMonth,
             'sum' => Transaction::all()->sum('amount')
         ];
-        // $data->sum('sum');
         return view('bank', $data);
     }
 
