@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class TransactionController extends Controller
 {
@@ -36,7 +37,8 @@ class TransactionController extends Controller
      */  
     public function create()
     {
-        //
+
+        return view('form');
     }
 
     /**
@@ -47,7 +49,12 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transaction = new Transaction;
+        $transaction->name = $request->input('name');
+        $transaction->amount = $request->input('amount');
+        $transaction->date_transaction = $request->input('date');
+        $transaction->save();
+        return Redirect::route('home');
     }
 
     /**
