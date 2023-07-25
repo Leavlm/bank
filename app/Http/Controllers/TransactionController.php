@@ -54,12 +54,15 @@ class TransactionController extends Controller
             'amount' => 'required',
             'date' => 'required'
         ]);
+        if (!$validated) {
+            return Redirect::route('home')->with('error', 'Transaction invalide');
+        }
         $transaction = new Transaction;
         $transaction->name = $request->input('name');
         $transaction->amount = $request->input('amount');
         $transaction->date_transaction = $request->input('date');
         $transaction->save();
-        return Redirect::route('home');
+        return Redirect::route('home')->with('success', 'La transaction a été ajoutée');
     }
 
     /**
