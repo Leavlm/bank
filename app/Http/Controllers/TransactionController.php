@@ -50,6 +50,11 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'amount' => 'required',
+            'date' => 'required'
+        ]);
         $transaction = new Transaction;
         $transaction->name = $request->input('name');
         $transaction->amount = $request->input('amount');
@@ -100,6 +105,6 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
