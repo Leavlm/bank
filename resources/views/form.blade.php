@@ -50,7 +50,7 @@
                 <h1 class="my-0 fw-normal fs-4">Ajouter une opération</h1>
             </div>
             <div class="card-body">
-                <form action=" {{ @route('add') }} " method="POST" >
+                <form action=" {{ route('transaction.update', $transaction->id) }} " method="POST" >
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nom de l'opération *</label>
