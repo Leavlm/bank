@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -25,7 +26,7 @@ class TransactionController extends Controller
         $data = [
             'title' => 'Liste des transactions',
             'transactions' => $transactionByMonth,
-            'sum' => Transaction::all()->sum('amount')
+            'sum' => Transaction::all()->sum('amount'),
         ];
         return view('bank', $data);
     }
@@ -37,8 +38,8 @@ class TransactionController extends Controller
      */  
     public function create()
     {
-
-        return view('form');
+        $data = ['categories' => Category::all() ];
+        return view('form', $data);
     }
 
     /**
@@ -52,7 +53,8 @@ class TransactionController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:50',
             'amount' => 'required',
-            'date' => 'required'
+            'date' => 'required',
+            'category' => 'required'
         ]);
         if (!$validated) {
             return Redirect::route('home')->with('error', 'Transaction invalide');
@@ -61,6 +63,7 @@ class TransactionController extends Controller
         $transaction->name = $request->input('name');
         $transaction->amount = $request->input('amount');
         $transaction->date_transaction = $request->input('date');
+        $transaction->category_id = $request->input('category');
         $transaction->save();
         return Redirect::route('home')->with('success', 'La transaction a été ajoutée');
     }
