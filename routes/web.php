@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,5 @@ Route::post('/add', [TransactionController::class, 'store'])->name('add');
 Route::get('/transactions/destroy/{id}', [TransactionController::class, 'destroy'])->name('transaction.destroy');
 Route::get('/transactions/edit/{id}', [TransactionController::class, 'edit'])->name('transaction.edit');
 Route::post('/transactions/update/{id}', [TransactionController::class, 'update'])->name('transaction.update');
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');

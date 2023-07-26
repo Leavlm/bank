@@ -14,11 +14,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categoryIds = Category::where('categorie_name', Category::all('categorie_name'))->pluck('id');
         $data = [
             'icon' => Category::all('icon_class'),
-            'categorie_name' => Category::all('icon_class')
+            'categories' => Category::all('categorie_name'),
+            'id' => Category::all('id'),
+            'count' => $categoryIds->count()
+
         ];
-        return view('bank', $data);
+        return view('categories', $data);
     }
 
     /**
@@ -50,7 +54,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $categorie = Category::find($id);
+
+     if (!$categorie) {
+        return redirect()->route('home')->with('error', 'Categorie non trouvée.');
+    }
+
+    return view('index', ['categorie' => $categorie]);
     }
 
     /**
