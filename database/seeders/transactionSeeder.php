@@ -28,13 +28,14 @@ class transactionSeeder extends Seeder
             'Cadeaux',
         ];
 
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $category = $this->getRandomCategory($categories);
             $amount = $this->getRandomAmountForCategory($category);
             DB::table('transactions')->insert([
                 'name' => $category,
                 'amount' => $amount,
                 'date_transaction' => $this->getRandomDate(),
+                'category_id' => rand(1, 9)
             ]);
         }
     }
@@ -71,4 +72,5 @@ class transactionSeeder extends Seeder
         $endDate = time();
         return date('Y-m-d H:i:s', rand($startDate, $endDate));
     }
+
 }
