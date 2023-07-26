@@ -20,7 +20,7 @@
             <nav class="col-11 col-md-7">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link link-secondary" aria-current="page">Opérations</a>
+                        <a href="{{ route('home') }}" class="nav-link link-secondary" aria-current="page">Opérations</a>
                     </li>
                     <li class="nav-item">
                         <a href="summary.html" class="nav-link link-body-emphasis">Synthèses</a>

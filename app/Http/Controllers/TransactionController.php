@@ -90,7 +90,7 @@ class TransactionController extends Controller
     {
     $transaction = Transaction::find($id);
 
-    if (!$transaction) {
+     if (!$transaction) {
         return redirect()->route('home')->with('error', 'Transaction non trouvée.');
     }
 
