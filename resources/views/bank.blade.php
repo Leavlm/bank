@@ -44,7 +44,7 @@
 
                         <tr>
                             <td width="50" class="ps-3">
-                            <i class="bi (ici le icon_class) fs-3"></i>
+                            <i class="bi bi-{{ $transaction->category->icon_class }} fs-3"></i>
                             </td>
                             <td>
                                 <time datetime="2023-07-10" class="d-block fst-italic fw-light">{{ $transaction->date_transaction }}</time>

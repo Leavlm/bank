@@ -16,7 +16,7 @@
                     <div>
                         <i class="bi bi-{{ $category->icon_class }} fs-3"></i>
                         {{ $category->categorie_name}}
-                        <span class=" badge bg-secondary">{{ $count }} opérations</span>
+                        <span class=" badge bg-secondary">{{ $category->transactions->count() }} opérations</span>
                     </div>
                     <div>
                         <a href="#" class="btn btn-outline-primary btn-sm rounded-circle">
