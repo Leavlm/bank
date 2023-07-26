@@ -14,12 +14,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categoryIds = Category::where('categorie_name', Category::all('categorie_name'))->pluck('id');
+        // $categoryIds = Category::where('categorie_name', Category::all('categorie_name'))->pluck('id');
         $data = [
             'icon' => Category::all('icon_class'),
-            'categories' => Category::all('categorie_name'),
+            'categories' => Category::all(),
             'id' => Category::all('id'),
-            'count' => $categoryIds->count()
+            'count' => Category::all()->count() 
 
         ];
         return view('categories', $data);
