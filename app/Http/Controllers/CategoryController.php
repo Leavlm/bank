@@ -14,18 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
-        var_dump(
-            Category::find(1)->transactions   
-        );
-        exit;
         // $categoryIds = Category::where('categorie_name', Category::all('categorie_name'))->pluck('id');
         $data = [
-            // 'icon' => Category::all('icon_class'),
-            'categories' => Category::all(),
-            // 'id' => Category::all('id'),
-            // 'count' => Category::all()->count() 
-
+            'categories' => Category::all()
         ];
         return view('categories', $data);
     }

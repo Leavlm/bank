@@ -26,6 +26,15 @@
                         <span class="input-group-text">€</span>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="category">Catégorie:</label>
+                    <select name="category" id="category">
+                        <option value="">Choisi ou j'tue l'chien</option>
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->categorie_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
 
                 <div class="text-center">
