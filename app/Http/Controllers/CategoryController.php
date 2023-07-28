@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 
 class CategoryController extends Controller
 {
@@ -39,7 +41,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'icon' => 'required'
+        ]);
+        if (!$validated) {
+            return Redirect::route('categories')->with('error', 'categorie invalide');
+        }
+        $categorie = new Category();
+        $categorie->categorie_name = $request->input('name');
+        $categorie->icon_class = $request->input('icon');
+        $categorie->save();
+        return Redirect::route('categories')->with('success', 'La categorie a été ajoutée');
     }
 
     /**
