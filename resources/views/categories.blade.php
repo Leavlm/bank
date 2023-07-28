@@ -36,10 +36,11 @@
             <h2 class="my-0 fw-normal fs-4">Ajouter une catégorie</h2>
         </div>
         <div class="card-body">
-            <form class="row align-items-end">
+            <form class="row align-items-end" method="post" action="{{@route('addCategories')}}"> 
+                @csrf
                 <div class="col col-md-5">
                     <label for="name" class="form-label">Nom *</label>
-                    <input type="email" class="form-control" name="name" id="name" required>
+                    <input type="text" class="form-control" name="name" id="name" required>
                 </div>
                 <div class="col-md-5">
                     <label for="icon" class="form-label">Classe icone bootstrap *</label>

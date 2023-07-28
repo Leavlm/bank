@@ -26,3 +26,4 @@ Route::get('/transactions/edit/{id}', [TransactionController::class, 'edit'])->n
 Route::post('/transactions/update/{id}', [TransactionController::class, 'update'])->name('transaction.update');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::post('/categories/add', [CategoryController::class, 'store'])->name('addCategories');
