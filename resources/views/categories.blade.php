@@ -2,6 +2,36 @@
 @section ('title', 'Catégories - Mes Comptes')
 @section ('content')
 
+<?php
+$icons = [
+    "currency-dollar",
+    "arrow-down-left",
+    "arrow-up-right",
+    "credit-card",
+    "arrow-left-right",
+    "clock-history",
+    "money-bill-wave",
+    "percent",
+    "exclamation-circle",
+    "credit-card",
+    "money-bill-alt",
+    "check",
+    "money-bill-alt",
+    "arrow-right",
+    "arrow-down",
+    "arrow-up",
+    "times-circle",
+    "credit-card-alt",
+    "credit-card",
+    "credit-card-alt",
+    "check",
+    "arrow-right",
+    "arrow-left",
+    "cog",
+    "lock",
+    "question-circle",
+  ];
+?>
 
 <div class="container">
     <section class="card mb-4 rounded-3 shadow-sm">
@@ -44,7 +74,12 @@
                 </div>
                 <div class="col-md-5">
                     <label for="icon" class="form-label">Classe icone bootstrap *</label>
-                    <input type="text" class="form-control" name="icon" id="icon" required>
+                    <select name="icon" id="icon">
+                        <option value="">Sélectionnez une icone</option>
+                            @foreach ($icons as $index => $icon)
+                        <option value=" {{ $icon }} ">bi-{{ $icon }}</option>
+                            @endforeach
+                    </select>
                 </div>
                 <div class="col col-md-2 text-center text-md-end mt-3 mt-md-0">
                     <button type="submit" class="btn btn-secondary">Ajouter</button>
